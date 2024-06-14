@@ -8,6 +8,7 @@ import {
 import { mockUsers } from "../utils/constants.mjs";
 import { createUserValidationSchema } from "../utils/validationSchema.mjs";
 import { resolveIndexByUserId } from "../utils/middlewares.mjs";
+import session from "express-session";
 
 const router = Router();
 
@@ -20,6 +21,11 @@ router.get(
     .isLength({ min: 3, max: 10 })
     .withMessage("Must be at least 3-10 characters"),
   (request, response) => {
+    request.sessionStore.get(request.session.id, (err, sessionData) => {
+      if (err) {
+        throw err;
+      }
+    });
     const result = validationResult(request);
     console.log(result);
     const {
@@ -32,6 +38,14 @@ router.get(
     return response.send(mockUsers);
   }
 );
+
+// Route for the home page
+router.get("/", (req, res) => {
+  res.cookie("hello", "people", { maxAge: 30000, signed: true });
+  res.status(200).send(`
+    <h1>Hello Express </h>
+  `);
+});
 
 router.get("/api/users/:id", resolveIndexByUserId, (req, res) => {
   const { findUserIndex } = req;
