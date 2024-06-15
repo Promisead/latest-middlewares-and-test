@@ -5,8 +5,16 @@ import routes from "./routes/index.mjs";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import passport from "passport";
+import mongoose from "mongoose";
 
 import "./strategies/local-strategy.mjs";
+
+mongoose
+  .connect(
+    "mongodb+srv://promise:2992029920@cluster0.cm0hr.mongodb.net/express_latest"
+  )
+  .then(() => console.log("Connected to Database"))
+  .catch((err) => console.log(`Error: ${err}`));
 
 // Middleware for parsing JSON bodies
 app.use(express.json());
