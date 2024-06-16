@@ -9,6 +9,7 @@ import mongoose from "mongoose";
 import MongoStore from "connect-mongo";
 
 import "./strategies/local-strategy.mjs";
+import "./strategies/discord-strategy.mjs";
 
 mongoose
   .connect(
@@ -43,3 +44,7 @@ app.use(routes);
 app.listen(5000, () => {
   console.log("Server running on port 5000");
 });
+
+//client_id: 1251926699789254667
+//secret_id: FRhbB0sFgySXeuUEb4JlhPo7MF844RDk
+//http://localhost:5000/api/auth/discord/redirect

@@ -4,6 +4,7 @@ import { Router } from "express";
 import passport from "passport";
 
 import "../strategies/local-strategy.mjs";
+import "../strategies/discord-strategy.mjs";
 
 const router = Router();
 
@@ -32,5 +33,15 @@ router.post("/api/auth/logout", (request, response) => {
   if (!request.user) return response.sendStatus(400);
   response.status(200).send("You Logged Out Successfully!");
 });
+
+//Routers Discord OAuth2
+router.get("/api/auth/discord", passport.authenticate("discord"));
+router.get(
+  "/api/auth/discord/redirect",
+  passport.authenticate("discord"),
+  (request, response) => {
+    response.status(200).send("logged in with discord successfully!");
+  }
+);
 
 export default router;
