@@ -13,6 +13,17 @@ Welcome to the **ExpressJS Comprehensive Tutorial and Reference** repository! Th
   - [Sessions and Authentication](#sessions-and-authentication)
   - [Hashing and OAuth](#hashing-and-oauth)
   - [Testing with Jest and E2E](#testing-with-jest-and-e2e)
+ 
+- Order of branches:
+- 1.  master (All CRUD endpoints).
+  2.  middleware-validation-routers.
+  3.  cookies-sessions-localStrategy.
+  4.  MongoDB-hashPassword.
+  5.  sessionStore.
+  6.  discord-OAuth2 (discord strategy).
+  7.  unitTest-Jest
+  8.  E2E-Test.
+
 - [Setup and Installation](#setup-and-installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
