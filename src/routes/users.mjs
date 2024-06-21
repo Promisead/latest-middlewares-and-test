@@ -50,52 +50,12 @@ router.get("/", (req, res) => {
   `);
 });
 
-router.get(
-  "/api/users/:id",
-  resolveIndexByUserId,
-  getUserByIdHandler
-  /* (req, res) => {
-  const { findUserIndex } = req;
-  const findUser = mockUsers[findUserIndex];
-  if (!findUser) return res.sendStatus(404);
-  return res.send(findUser);
-} */
-);
+router.get("/api/users/:id", resolveIndexByUserId, getUserByIdHandler);
 
 router.post(
   "/api/users",
   checkSchema(createUserValidationSchema),
   createUserHandler
-  // async (request, response) => {
-  //   //New Logic to create new user to mongoDB database
-
-  //   //  const { body } = request;
-  //   const result = validationResult(request);
-  //   if (!result.isEmpty()) return response.status(400).send(result.array());
-  //   const data = matchedData(request);
-  //   console.log(`before hash : ${data.password}`);
-  //   data.password = hashPassword(data.password);
-  //   console.log(`After hash : ${data.password}`);
-
-  //   const newUser = new User(data);
-  //   try {
-  //     const savedUser = await newUser.save();
-  //     return response.status(201).send(savedUser);
-  //   } catch (err) {
-  //     return response.sendStatus(400);
-  //   }
-
-  //   // Logic to create a new user
-  //   /* const result = validationResult(req);
-  //   if (!result.isEmpty())
-  //     return res.status(400).send({
-  //       errors: result.array(),
-  //     });
-  //   const data = matchedData(req);
-  //   const newUser = { id: mockUsers[mockUsers.length - 1].id + 1, ...data };
-  //   mockUsers.push(newUser);
-  //   res.status(201).send(`User  Added Successfully`); */
-  // }
 );
 
 router.put("/api/users/:id", resolveIndexByUserId, (request, response) => {

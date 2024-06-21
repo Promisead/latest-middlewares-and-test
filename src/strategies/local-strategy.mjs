@@ -15,7 +15,6 @@ passport.deserializeUser(async (id, done) => {
   console.log(`Deserialize User ID: ${id}`);
 
   try {
-    // const findUser = mockUsers.find((user) => user.id === id);
     const findUser = await User.findById(id);
 
     if (!findUser) throw new Error("User Not Found");
@@ -30,7 +29,6 @@ export default passport.use(
     console.log(`username: ${username}`);
     console.log(`password: ${password}`);
     try {
-      // const findUser = mockUsers.find((user) => user.username === username);
       const findUser = await User.findOne({ username });
       if (!findUser) throw new Error("User not found");
       if (!comparePassword(password, findUser.password))

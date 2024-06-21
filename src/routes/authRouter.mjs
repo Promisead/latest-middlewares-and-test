@@ -1,5 +1,3 @@
-//import express from "express";
-//const app = express();
 import { Router } from "express";
 import passport from "passport";
 

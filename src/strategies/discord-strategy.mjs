@@ -23,9 +23,7 @@ export default passport.use(
       callbackURL: "http://localhost:5000/api/auth/discord/redirect",
       scope: ["identify"],
     },
-    // async (accessToken, refreshToken, profile, done) => {
-    //   console.log(profile);
-    // }
+
     async (accessToken, refreshToken, profile, done) => {
       let findUser;
       try {
